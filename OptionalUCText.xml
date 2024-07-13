@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by ModBuddy on 2024/7/13 20:07:43 -->
+<GameData>
+	<Language_zh_CN>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
+			<Text>请选择四项UC进行本局游戏</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
+			<Text>请选择一项UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
+			<Text>确认选择</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
+			<Text>
+				[ICON_BULLET][COLOR_YELLOW]确认[ENDCOLOR]你的选择。
+				[NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]请注意：[ENDCOLOR]
+				[NEWLINE][ICON_BULLET]重复的选项只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
+				[NEWLINE][ICON_BULLET]如果不进行选择，则不设置UC（你可以用少于4个选项开始游戏）。
+				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
+			</Text>
+		</Row>
+	</Language_zh_CN>
+
+	<Language_zh_Hant_HK>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
+			<Text>請選擇四項UC進行本局遊戲</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
+			<Text>請選擇壹項UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
+			<Text>確認選擇</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
+			<Text>
+				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]妳的選擇。
+				[NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]請註意：[ENDCOLOR]
+				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]壹次[ENDCOLOR]。
+				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（妳可以用少於4個選項開始遊戲）。
+				[NEWLINE][ICON_BULLET]妳會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若妳的選項中包含他們，則依舊可以使用）。
+			</Text>
+		</Row>
+	</Language_zh_Hant_HK>
+
+	<Language_en_US>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
+			<Text>請選擇四項UC進行本局遊戲</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
+			<Text>請選擇壹項UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
+			<Text>確認選擇</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
+			<Text>
+				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]妳的選擇。
+				[NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]請註意：[ENDCOLOR]
+				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]壹次[ENDCOLOR]。
+				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（妳可以用少於4個選項開始遊戲）。
+				[NEWLINE][ICON_BULLET]妳會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若妳的選項中包含他們，則依舊可以使用）。
+			</Text>
+		</Row>
+	</Language_en_US>
+</GameData>
