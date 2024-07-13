@@ -12,24 +12,43 @@ local g_ChosenUCList = {{nil, nil}, {nil, nil}, {nil, nil}, {nil, nil}}
 local UC_UNIT = 0;
 local UC_BUILDING = 1;
 local UC_IMPROVEMENT = 2;
+local t_List = {};
 
 -- 抽取所有UC
 for row in GameInfo.Civilization_UnitClassOverrides() do
-	if row.UnitType then
-		table.insert(g_UCList,{row.UnitType, UC_UNIT, GameInfoTypes[row.UnitType]})
+	-- 不能建造的以及本身是默认单位的不要
+	-- 海鹞 蛮族?
+	if row.UnitType 
+	and row.UnitType ~= "UNIT_BARBARIAN_WARRIOR"
+	and row.UnitType ~= "UNIT_BARBARIAN_ARCHER"
+	and row.UnitType ~= "UNIT_CARRIER_FIGHTER_ENGLISH_HARRIER"
+	then
+		table.insert(t_List, {row.UnitType, UC_UNIT, GameInfoTypes[row.UnitType], Locale.ConvertTextKey(GameInfo.Units[row.UnitType].Description)})
 	end
-	
 end
+table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end)
+g_UCList = t_List
+t_List = {}
 for row in GameInfo.Civilization_BuildingClassOverrides() do
-	if row.BuildingType then
-		table.insert(g_UCList,{row.BuildingType, UC_BUILDING, GameInfoTypes[row.BuildingType]})
+	-- 不能建造的不要
+	-- 总督府 总督宫 城邦宫殿
+	if row.BuildingType 
+	and GameInfo.Buildings[row.BuildingType].Cost > 1
+	then
+		table.insert(t_List, {row.BuildingType, UC_BUILDING, GameInfoTypes[row.BuildingType], Locale.ConvertTextKey(GameInfo.Buildings[row.BuildingType].Description)})
 	end
 end
+table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end)
+for k, v in pairs(t_List) do table.insert(g_UCList, v) end
+t_List = {}
 for row in GameInfo.Improvements() do
 	if row.Type and row.CivilizationType then
-		table.insert(g_UCList,{row.Type, UC_IMPROVEMENT, row.ID})
+		table.insert(t_List, {row.Type, UC_IMPROVEMENT, row.ID, Locale.ConvertTextKey(row.Description)})
 	end
 end
+table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end)
+for k, v in pairs(t_List) do table.insert(g_UCList, v) end
+t_List = {}
 
 local activePlayerID = Game.GetActivePlayer()
 local activePlayer = Players[activePlayerID]
@@ -37,6 +56,7 @@ local activePlayer = Players[activePlayerID]
 --==========================================================================================
 -- Main Functions
 --==========================================================================================
+-- TODO 右键图标打开百科
 -- Initializes All Components.
 function initializeDialog()
 
@@ -179,10 +199,14 @@ function onApplyButton()
 				local unit = GameInfo.Units[v[1]]
 				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUUFromExtra", unit.ID)
 				activePlayer:ChangeUUFromExtra(unit.ID)
+				--禁用默认
+				activePlayer:ChangeUUFromExtra(GameInfoTypes[GameInfo.UnitClasses[unit.Class].DefaultUnit])
 			elseif v[2] == UC_BUILDING then
 				local building = GameInfo.Buildings[v[1]]
 				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUBFromExtra", building.ID)
 				activePlayer:ChangeUBFromExtra(building.ID)
+				--禁用默认
+				activePlayer:ChangeUBFromExtra(GameInfoTypes[GameInfo.BuildingClasses[building.BuildingClass].DefaultBuilding])
 			elseif v[2] == UC_IMPROVEMENT then
 				local improvement = GameInfo.Improvements[v[1]]
 				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUIFromExtra", improvement.ID)
@@ -196,10 +220,10 @@ function onApplyButton()
 	hideDialog()
 end
 Controls.OKButton:RegisterCallback(Mouse.eLClick, onApplyButton)
+
 --==========================================================================================
 -- Smaller Functions
 --==========================================================================================
-
 -- Show function
 function showDialog()
 	-- Show panel
@@ -216,6 +240,7 @@ end
 function hideDialog()
 	ContextPtr:SetHide(true)
 end
+
 --==========================================================================================
 -- Game Procession Functions
 --==========================================================================================
