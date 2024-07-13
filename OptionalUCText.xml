@@ -20,6 +20,15 @@
 				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
 			</Text>
 		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
+			<Text>你已选择UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT">
+			<Text>本局你选择以下UC进行游戏：</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
+			<Text>你未选择任何UC，将仅靠UA进行本局游戏，祝你好运！</Text>
+		</Row>
 	</Language_zh_CN>
 
 	<Language_zh_Hant_HK>
@@ -34,12 +43,21 @@
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
-				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]妳的選擇。
+				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]你的選擇。
 				[NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]請註意：[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]壹次[ENDCOLOR]。
-				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（妳可以用少於4個選項開始遊戲）。
-				[NEWLINE][ICON_BULLET]妳會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若妳的選項中包含他們，則依舊可以使用）。
+				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
+				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
 			</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
+			<Text>你已選擇UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT">
+			<Text>本局你選擇以下UC進行遊戲：</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
+			<Text>你未選擇任何UC，將僅靠UA進行本局遊戲，祝你好運！</Text>
 		</Row>
 	</Language_zh_Hant_HK>
 
@@ -55,12 +73,21 @@
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
-				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]妳的選擇。
+				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]你的選擇。
 				[NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]請註意：[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]壹次[ENDCOLOR]。
-				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（妳可以用少於4個選項開始遊戲）。
-				[NEWLINE][ICON_BULLET]妳會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若妳的選項中包含他們，則依舊可以使用）。
+				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
+				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
 			</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
+			<Text>你已選擇UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT">
+			<Text>本局你選擇以下UC進行遊戲：</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
+			<Text>你未選擇任何UC，將僅靠UA進行本局遊戲，祝你好運！</Text>
 		</Row>
 	</Language_en_US>
 </GameData>

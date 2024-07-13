@@ -177,18 +177,22 @@ function onApplyButton()
 		if v[1] and v[2] then
 			if v[2] == UC_UNIT then
 				local unit = GameInfo.Units[v[1]]
-				activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUUFromExtra", unit.ID)
+				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUUFromExtra", unit.ID)
+				activePlayer:ChangeUUFromExtra(unit.ID)
 			elseif v[2] == UC_BUILDING then
 				local building = GameInfo.Buildings[v[1]]
-				activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUBFromExtra", building.ID)
+				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUBFromExtra", building.ID)
+				activePlayer:ChangeUBFromExtra(building.ID)
 			elseif v[2] == UC_IMPROVEMENT then
 				local improvement = GameInfo.Improvements[v[1]]
-				activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUIFromExtra", improvement.ID)
+				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUIFromExtra", improvement.ID)
+				activePlayer:ChangeUIFromExtra(improvement.ID)
 			end
 		end
-		print(v[1])
 	end
-	activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lSetLostUC", true)
+	addOptionalUCNotification()
+	--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lSetLostUC", true)
+	activePlayer:SetLostUC(true)
 	hideDialog()
 end
 Controls.OKButton:RegisterCallback(Mouse.eLClick, onApplyButton)
@@ -215,9 +219,53 @@ end
 --==========================================================================================
 -- Game Procession Functions
 --==========================================================================================
+function updateChosenUCList()
+	for row in GameInfo.Civilization_UnitClassOverrides() do
+		if row.UnitType and (activePlayer:GetUUFromExtra(GameInfoTypes[row.UnitType]) > 0) then
+			table.insert(g_ChosenUCList,{GameInfoTypes[row.UnitType], UC_UNIT})
+		end
+	end
+	for row in GameInfo.Civilization_BuildingClassOverrides() do
+		if row.BuildingType and (activePlayer:GetUBFromExtra(GameInfoTypes[row.BuildingType]) > 0)  then
+			table.insert(g_ChosenUCList,{GameInfoTypes[row.BuildingType], UC_BUILDING})
+		end
+	end
+	for row in GameInfo.Improvements() do
+		if row.Type and (activePlayer:GetUIFromExtra(GameInfoTypes[row.Type]) > 0)  then
+			table.insert(g_ChosenUCList,{GameInfoTypes[row.Type], UC_IMPROVEMENT})
+		end
+	end
+end
+function addOptionalUCNotification()
+	local heading = Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD")
+	local text = "";
+	local UCDescript = "";
+	for k, v in pairs(g_ChosenUCList) do
+		if v[1] and v[2] then
+			if v[2] == UC_UNIT then
+				text = text .. "[NEWLINE]" .. Locale.ConvertTextKey(GameInfo.Units[v[1]].Description)
+			elseif v[2] == UC_BUILDING then
+				text = text .. "[NEWLINE]" .. Locale.ConvertTextKey(GameInfo.Buildings[v[1]].Description)
+			elseif v[2] == UC_IMPROVEMENT then
+				text = text .. "[NEWLINE]" .. Locale.ConvertTextKey(GameInfo.Improvements[v[1]].Description)
+			end
+		end
+	end
+	if text ~= "" then
+		text = Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT") .. text
+	else
+		text = Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2")
+	end
+	activePlayer:AddNotification(NotificationTypes.NOTIFICATION_GENERIC, text, heading, -1, -1);
+end
 function showDialogOnGameStart()
+	activePlayerID = Game.GetActivePlayer()
+	activePlayer = Players[activePlayerID]
 	if not activePlayer:IsLostUC() then
 		showDialog()
+	else
+		updateChosenUCList()
+		addOptionalUCNotification()
 	end
 end
 Events.SequenceGameInitComplete.Add(showDialogOnGameStart)
