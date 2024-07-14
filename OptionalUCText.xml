@@ -14,11 +14,13 @@
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
 				[ICON_BULLET][COLOR_YELLOW]确认[ENDCOLOR]你的选择。
-				[NEWLINE][ICON_BULLET]请[COLOR_NEGATIVE_TEXT]注意：[ENDCOLOR]
+				[NEWLINE][ICON_BULLET]请[COLOR_NEGATIVE_TEXT]注意[ENDCOLOR]：
 				[NEWLINE][ICON_BULLET]重复的选项只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
 				[NEWLINE][ICON_BULLET]如果不进行选择，则不设置UC（你可以用少于4个选项开始游戏）。
 				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
-				[NEWLINE][ICON_BULLET]部分UB原文明不在场时仅[COLOR_NEGATIVE_TEXT]面板属性[ENDCOLOR]生效。
+				[NEWLINE][ICON_BULLET]部分UB暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：总督府、总督宫。
+				[NEWLINE][ICON_BULLET]下列UB原文明不在场时仅[COLOR_NEGATIVE_TEXT]面板属性[ENDCOLOR]生效：阿苏尔神庙、诺曼营地、商站、伊斯兰大学、迦太基集市、伊扎卡。
+				[NEWLINE][ICON_BULLET]部分UU暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：海鹞系列舰载机。
 				[NEWLINE][ICON_BULLET]选择伟人UU不能[COLOR_NEGATIVE_TEXT]正常诞生[ENDCOLOR]，只能在满足条件后使用[ICON_PEACE]信仰购买。
 			</Text>
 		</Row>
@@ -33,12 +35,12 @@
 		</Row>
 	</Language_zh_CN>
 
-	<Language_zh_Hant_HK>
+	<Language_ZH_Hant_HK>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
 			<Text>請選擇四項UC進行本局遊戲</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
-			<Text>請選擇壹項UC</Text>
+			<Text>請選擇一項UC</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
 			<Text>確認選擇</Text>
@@ -46,11 +48,13 @@
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
 				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]你的選擇。
-				[NEWLINE][ICON_BULLET]請[COLOR_NEGATIVE_TEXT]註意：[ENDCOLOR]
-				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]壹次[ENDCOLOR]。
+				[NEWLINE][ICON_BULLET]請[COLOR_NEGATIVE_TEXT]註意[ENDCOLOR]：
+				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
 				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
 				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
-				[NEWLINE][ICON_BULLET]部分UB原文明不在場時僅[COLOR_NEGATIVE_TEXT]面板屬性[ENDCOLOR]生效。
+				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：總督府、總督宮。
+				[NEWLINE][ICON_BULLET]下列UB原文明不在場時僅[COLOR_NEGATIVE_TEXT]面板屬性[ENDCOLOR]生效：阿蘇爾神廟、諾曼營地、商站、伊斯蘭大學、迦太基集市、伊紮卡。
+				[NEWLINE][ICON_BULLET]部分UU暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：海鷂系列艦載機。
 				[NEWLINE][ICON_BULLET]選擇偉人UU不能[COLOR_NEGATIVE_TEXT]正常誕生[ENDCOLOR]，只能在滿足條件後使用[ICON_PEACE]信仰購買。
 			</Text>
 		</Row>
@@ -63,14 +67,14 @@
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
 			<Text>你未選擇任何UC，將僅靠UA進行本局遊戲，祝你好運！</Text>
 		</Row>
-	</Language_zh_Hant_HK>
+	</Language_ZH_Hant_HK>
 
 	<Language_en_US>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
 			<Text>請選擇四項UC進行本局遊戲</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
-			<Text>請選擇壹項UC</Text>
+			<Text>請選擇一項UC</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
 			<Text>確認選擇</Text>
@@ -78,11 +82,13 @@
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
 				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]你的選擇。
-				[NEWLINE][ICON_BULLET]請[COLOR_NEGATIVE_TEXT]註意：[ENDCOLOR]
-				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]壹次[ENDCOLOR]。
+				[NEWLINE][ICON_BULLET]請[COLOR_NEGATIVE_TEXT]註意[ENDCOLOR]：
+				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
 				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
 				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
-				[NEWLINE][ICON_BULLET]部分UB原文明不在場時僅[COLOR_NEGATIVE_TEXT]面板屬性[ENDCOLOR]生效。
+				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：總督府、總督宮。
+				[NEWLINE][ICON_BULLET]下列UB原文明不在場時僅[COLOR_NEGATIVE_TEXT]面板屬性[ENDCOLOR]生效：阿蘇爾神廟、諾曼營地、商站、伊斯蘭大學、迦太基集市、伊紮卡。
+				[NEWLINE][ICON_BULLET]部分UU暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：海鷂系列艦載機。
 				[NEWLINE][ICON_BULLET]選擇偉人UU不能[COLOR_NEGATIVE_TEXT]正常誕生[ENDCOLOR]，只能在滿足條件後使用[ICON_PEACE]信仰購買。
 			</Text>
 		</Row>

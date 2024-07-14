@@ -1,5 +1,6 @@
 include ("IconSupport");
 include ("MenuUtils");
+include("InfoTooltipInclude");
 print("UC Selection Loaded")
 
 -- Hide dialog by default.
@@ -21,7 +22,7 @@ for row in GameInfo.Civilization_UnitClassOverrides() do
 	if row.UnitType 
 	and row.UnitType ~= "UNIT_BARBARIAN_WARRIOR"
 	and row.UnitType ~= "UNIT_BARBARIAN_ARCHER"
-	and row.UnitType ~= "UNIT_CARRIER_FIGHTER_ENGLISH_HARRIER"
+	and GameInfo.Units[row.UnitType].Special ~= "SPECIALUNIT_FIGHTER"
 	then
 		table.insert(t_List, {row.UnitType, UC_UNIT, GameInfoTypes[row.UnitType], Locale.ConvertTextKey(GameInfo.Units[row.UnitType].Description)})
 	end
@@ -89,17 +90,17 @@ function OnUCSelected1(UCID, UCType)
 	if UCType == UC_UNIT then
 		local unit = GameInfo.Units[UCID]
 		Controls.UCSelectList1:GetButton():SetText(Locale.ConvertTextKey(unit.Description or 0))
-		Controls.UCIconButton1:SetToolTipString(Locale.ConvertTextKey(unit.Help or 0))
+		Controls.UCIconButton1:SetToolTipString(GetHelpTextForUnit(UCID))
 		IconHookup(unit.PortraitIndex, 256, unit.IconAtlas, Controls.UCPPortrait1);
 	elseif UCType == UC_BUILDING then
 		local building = GameInfo.Buildings[UCID]
 		Controls.UCSelectList1:GetButton():SetText(Locale.ConvertTextKey(building.Description or 0))
-		Controls.UCIconButton1:SetToolTipString(Locale.ConvertTextKey(building.Help or 0))
+		Controls.UCIconButton1:SetToolTipString(GetHelpTextForBuilding(UCID))
 		IconHookup(building.PortraitIndex, 256, building.IconAtlas, Controls.UCPPortrait1);
 	elseif UCType == UC_IMPROVEMENT then
 		local improvement = GameInfo.Improvements[UCID]
 		Controls.UCSelectList1:GetButton():SetText(Locale.ConvertTextKey(improvement.Description or 0))
-		Controls.UCIconButton1:SetToolTipString(Locale.ConvertTextKey(improvement.Help or 0))
+		Controls.UCIconButton1:SetToolTipString(GetHelpTextForImprovement(UCID))
 		IconHookup(improvement.PortraitIndex, 256, improvement.IconAtlas, Controls.UCPPortrait1);
 	end
 	g_ChosenUCList[1] = {UCID, UCType}
@@ -109,17 +110,17 @@ function OnUCSelected2(UCID, UCType)
 	if UCType == UC_UNIT then
 		local unit = GameInfo.Units[UCID]
 		Controls.UCSelectList2:GetButton():SetText(Locale.ConvertTextKey(unit.Description or 0))
-		Controls.UCIconButton2:SetToolTipString(Locale.ConvertTextKey(unit.Help or 0))
+		Controls.UCIconButton2:SetToolTipString(GetHelpTextForUnit(UCID))
 		IconHookup(unit.PortraitIndex, 256, unit.IconAtlas, Controls.UCPPortrait2);
 	elseif UCType == UC_BUILDING then
 		local building = GameInfo.Buildings[UCID]
 		Controls.UCSelectList2:GetButton():SetText(Locale.ConvertTextKey(building.Description or 0))
-		Controls.UCIconButton2:SetToolTipString(Locale.ConvertTextKey(building.Help or 0))
+		Controls.UCIconButton2:SetToolTipString(GetHelpTextForBuilding(UCID))
 		IconHookup(building.PortraitIndex, 256, building.IconAtlas, Controls.UCPPortrait2);
 	elseif UCType == UC_IMPROVEMENT then
 		local improvement = GameInfo.Improvements[UCID]
 		Controls.UCSelectList2:GetButton():SetText(Locale.ConvertTextKey(improvement.Description or 0))
-		Controls.UCIconButton2:SetToolTipString(Locale.ConvertTextKey(improvement.Help or 0))
+		Controls.UCIconButton2:SetToolTipString(GetHelpTextForImprovement(UCID))
 		IconHookup(improvement.PortraitIndex, 256, improvement.IconAtlas, Controls.UCPPortrait2);
 	end
 	g_ChosenUCList[2] = {UCID, UCType}
@@ -129,17 +130,17 @@ function OnUCSelected3(UCID, UCType)
 	if UCType == UC_UNIT then
 		local unit = GameInfo.Units[UCID]
 		Controls.UCSelectList3:GetButton():SetText(Locale.ConvertTextKey(unit.Description or 0))
-		Controls.UCIconButton3:SetToolTipString(Locale.ConvertTextKey(unit.Help or 0))
+		Controls.UCIconButton3:SetToolTipString(GetHelpTextForUnit(UCID))
 		IconHookup(unit.PortraitIndex, 256, unit.IconAtlas, Controls.UCPPortrait3);
 	elseif UCType == UC_BUILDING then
 		local building = GameInfo.Buildings[UCID]
 		Controls.UCSelectList3:GetButton():SetText(Locale.ConvertTextKey(building.Description or 0))
-		Controls.UCIconButton3:SetToolTipString(Locale.ConvertTextKey(building.Help or 0))
+		Controls.UCIconButton3:SetToolTipString(GetHelpTextForBuilding(UCID))
 		IconHookup(building.PortraitIndex, 256, building.IconAtlas, Controls.UCPPortrait3);
 	elseif UCType == UC_IMPROVEMENT then
 		local improvement = GameInfo.Improvements[UCID]
 		Controls.UCSelectList3:GetButton():SetText(Locale.ConvertTextKey(improvement.Description or 0))
-		Controls.UCIconButton3:SetToolTipString(Locale.ConvertTextKey(improvement.Help or 0))
+		Controls.UCIconButton3:SetToolTipString(GetHelpTextForImprovement(UCID))
 		IconHookup(improvement.PortraitIndex, 256, improvement.IconAtlas, Controls.UCPPortrait3);
 	end
 	g_ChosenUCList[3] = {UCID, UCType}
@@ -149,17 +150,17 @@ function OnUCSelected4(UCID, UCType)
 	if UCType == UC_UNIT then
 		local unit = GameInfo.Units[UCID]
 		Controls.UCSelectList4:GetButton():SetText(Locale.ConvertTextKey(unit.Description or 0))
-		Controls.UCIconButton4:SetToolTipString(Locale.ConvertTextKey(unit.Help or 0))
+		Controls.UCIconButton4:SetToolTipString(GetHelpTextForUnit(UCID))
 		IconHookup(unit.PortraitIndex, 256, unit.IconAtlas, Controls.UCPPortrait4);
 	elseif UCType == UC_BUILDING then
 		local building = GameInfo.Buildings[UCID]
 		Controls.UCSelectList4:GetButton():SetText(Locale.ConvertTextKey(building.Description or 0))
-		Controls.UCIconButton4:SetToolTipString(Locale.ConvertTextKey(building.Help or 0))
+		Controls.UCIconButton4:SetToolTipString(GetHelpTextForBuilding(UCID))
 		IconHookup(building.PortraitIndex, 256, building.IconAtlas, Controls.UCPPortrait4);
 	elseif UCType == UC_IMPROVEMENT then
 		local improvement = GameInfo.Improvements[UCID]
 		Controls.UCSelectList4:GetButton():SetText(Locale.ConvertTextKey(improvement.Description or 0))
-		Controls.UCIconButton4:SetToolTipString(Locale.ConvertTextKey(improvement.Help or 0))
+		Controls.UCIconButton4:SetToolTipString(GetHelpTextForImprovement(UCID))
 		IconHookup(improvement.PortraitIndex, 256, improvement.IconAtlas, Controls.UCPPortrait4);
 	end
 	g_ChosenUCList[4] = {UCID, UCType}
