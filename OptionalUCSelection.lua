@@ -200,6 +200,7 @@ function onApplyButton()
 				--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lChangeUUFromExtra", unit.ID)
 				activePlayer:ChangeUUFromExtra(unit.ID)
 				--禁用默认
+				--if unit.Special ~= "SPECIALUNIT_PEOPLE" then end
 				activePlayer:ChangeUUFromExtra(GameInfoTypes[GameInfo.UnitClasses[unit.Class].DefaultUnit])
 			elseif v[2] == UC_BUILDING then
 				local building = GameInfo.Buildings[v[1]]
