@@ -46,10 +46,15 @@
       </Content>
     </ModContent>
     <ModActions>
-      <Action xmlns="">
+      <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>OptionalUCText.xml</FileName>
+      </Action>
+      <Action>
+        <Set>OnGetDLLPath</Set>
+        <Type>SetDllPath</Type>
+        <FileName>CvGameCore_Expansion2.dll</FileName>
       </Action>
     </ModActions>
   </PropertyGroup>
