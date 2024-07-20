@@ -10,8 +10,7 @@
     <Teaser>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Teaser>
     <Description>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Description>
     <Authors>Qingyin</Authors>
-    <SpecialThanks>
-    </SpecialThanks>
+    <SpecialThanks>旅宿樱花、657、苏维埃无惨阶级、</SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
     <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
     <SupportsSinglePlayer>true</SupportsSinglePlayer>
