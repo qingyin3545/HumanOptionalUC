@@ -5,9 +5,9 @@
     <ProjectGuid>{4f9c594e-96a7-4ff8-8955-f44eb86fd13b}</ProjectGuid>
     <Name>玩家自选UC</Name>
     <Guid>0e4241d7-7d73-4f6b-aacd-c4e07ab6e478</Guid>
-    <ModVersion>4</ModVersion>
+    <ModVersion>5</ModVersion>
     <Stability>Alpha</Stability>
-    <Teaser>(4.6)[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Teaser>
+    <Teaser>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Teaser>
     <Description>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Description>
     <Authors>Qingyin</Authors>
     <SpecialThanks>旅宿樱花、657、苏维埃无惨阶级、叶帅</SpecialThanks>
@@ -25,7 +25,7 @@
         <Type>Mod</Type>
         <Name>MPDLL</Name>
         <Id>a2969a0a-e4da-41cc-9e0b-19b29aa971d8</Id>
-        <MinVersion>29</MinVersion>
+        <MinVersion>31</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>
       <Association>
@@ -64,10 +64,6 @@
     <DeployMod>true</DeployMod>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="CvGameCore_Expansion2.dll">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="OptionalUCText.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>

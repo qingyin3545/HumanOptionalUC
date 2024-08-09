@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by ModBuddy on 2024/7/13 20:07:43 -->
 <GameData>
+	<CustomModOptions>
+		<Update>
+			<Where Name="GLOBAL_OPTIONAL_UC"/>
+			<Set Value="1"/>
+		</Update>
+	</CustomModOptions>
+
 	<Language_zh_CN>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
 			<Text>请选择四项UC进行本局游戏</Text>
@@ -19,12 +26,11 @@
 				[NEWLINE][ICON_BULLET]如果不进行选择，则不设置UC（你可以用少于4个选项开始游戏）。
 				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
 				[NEWLINE][ICON_BULLET]前置建筑要求[COLOR_YELLOW]仅需[ENDCOLOR]城市拥有前置同类建筑之一。
-				[NEWLINE][ICON_BULLET]部分UB暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：总督府、总督宫。
+				[NEWLINE][ICON_BULLET]部分UB暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：除总督府、总督宫、宫殿外不可建造的建筑。
 				[NEWLINE][ICON_BULLET]下列UB原文明不在场时仅[COLOR_NEGATIVE_TEXT]面板属性[ENDCOLOR]生效：阿苏尔神庙、诺曼营地、商站、伊斯兰大学、迦太基集市、伊扎卡。
 				[NEWLINE][ICON_BULLET]选择非本文明UB时，政策、建筑、信条对建筑的加成将[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]旧单位升级时若有多个目标会[COLOR_YELLOW]随机[ENDCOLOR]选择其中一个。
 				[NEWLINE][ICON_BULLET]部分UU暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：海鹞系列舰载机。
-				[NEWLINE][ICON_BULLET]选择伟人UU不能[COLOR_NEGATIVE_TEXT]正常诞生[ENDCOLOR]，只能在满足条件后使用[ICON_PEACE]信仰购买。
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
@@ -56,12 +62,11 @@
 				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
 				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
 				[NEWLINE][ICON_BULLET]前置建築要求[COLOR_YELLOW]僅需[ENDCOLOR]城市擁有前置同類建築之一。
-				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：總督府、總督宮。
+				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：除總督府、總督宮、宮殿外不可建造的建築。
 				[NEWLINE][ICON_BULLET]下列UB原文明不在場時僅[COLOR_NEGATIVE_TEXT]面板屬性[ENDCOLOR]生效：阿蘇爾神廟、諾曼營地、商站、伊斯蘭大學、迦太基集市、伊紮卡。
 				[NEWLINE][ICON_BULLET]選擇非本文明UB時，政策、建築、信條對建築的加成將[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]舊單位升級時若有多個目標會[COLOR_YELLOW]隨機[ENDCOLOR]選擇其中一個。
 				[NEWLINE][ICON_BULLET]部分UU暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：海鷂系列艦載機。
-				[NEWLINE][ICON_BULLET]選擇偉人UU不能[COLOR_NEGATIVE_TEXT]正常誕生[ENDCOLOR]，只能在滿足條件後使用[ICON_PEACE]信仰購買。
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
@@ -93,12 +98,11 @@
 				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
 				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
 				[NEWLINE][ICON_BULLET]前置建築要求[COLOR_YELLOW]僅需[ENDCOLOR]城市擁有前置同類建築之一。
-				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：總督府、總督宮。
+				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：除總督府、總督宮、宮殿外不可建造的建築。
 				[NEWLINE][ICON_BULLET]下列UB原文明不在場時僅[COLOR_NEGATIVE_TEXT]面板屬性[ENDCOLOR]生效：阿蘇爾神廟、諾曼營地、商站、伊斯蘭大學、迦太基集市、伊紮卡。
 				[NEWLINE][ICON_BULLET]選擇非本文明UB時，政策、建築、信條對建築的加成將[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]舊單位升級時若有多個目標會[COLOR_YELLOW]隨機[ENDCOLOR]選擇其中一個。
 				[NEWLINE][ICON_BULLET]部分UU暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：海鷂系列艦載機。
-				[NEWLINE][ICON_BULLET]選擇偉人UU不能[COLOR_NEGATIVE_TEXT]正常誕生[ENDCOLOR]，只能在滿足條件後使用[ICON_PEACE]信仰購買。
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">

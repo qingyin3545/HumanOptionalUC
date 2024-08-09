@@ -1,7 +1,6 @@
 include ("IconSupport");
 include ("MenuUtils");
 include("InfoTooltipInclude");
-print("UC Selection Loaded")
 
 -- Hide dialog by default.
 ContextPtr:SetHide(true);
@@ -34,9 +33,12 @@ g_UCList = t_List
 t_List = {}
 for row in GameInfo.Civilization_BuildingClassOverrides() do
 	-- 不能建造的不要
-	-- 总督府 总督宫 城邦宫殿
+	-- 总督府 总督宫 宫殿允许(V5)
 	if row.BuildingType 
-	and GameInfo.Buildings[row.BuildingType].Cost > 1
+	and (GameInfo.Buildings[row.BuildingType].Cost > 1 
+		or row.BuildingType == "BUILDING_SATRAPS_COURT" 
+		or row.BuildingType == "BUILDING_PUPPET_GOVERNEMENT_FULL"
+		or GameInfo.Buildings[row.BuildingType].BuildingClass == "BUILDINGCLASS_PALACE") 
 	then
 		table.insert(t_List, {row.BuildingType, UC_BUILDING, GameInfoTypes[row.BuildingType], Locale.ConvertTextKey(GameInfo.Buildings[row.BuildingType].Description)})
 	end
@@ -298,3 +300,4 @@ function showDialogOnGameStart()
 	end
 end
 Events.SequenceGameInitComplete.Add(showDialogOnGameStart)
+print("UC Selection Loaded")
