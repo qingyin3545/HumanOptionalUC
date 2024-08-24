@@ -219,9 +219,10 @@ function onApplyButton()
 			end
 		end
 	end
-	addOptionalUCNotification()
 	--activePlayer:SendAndExecuteLuaFunction("CvLuaPlayer::lSetLostUC", true)
 	activePlayer:SetLostUC(true)
+	addOptionalUCNotification()
+	changeGreatWorkBuildings()
 	hideDialog()
 end
 Controls.OKButton:RegisterCallback(Mouse.eLClick, onApplyButton)
@@ -288,6 +289,24 @@ function addOptionalUCNotification()
 	end
 	activePlayer:AddNotification(NotificationTypes.NOTIFICATION_GENERIC, text, heading, -1, -1);
 end
+function changeGreatWorkBuildings()
+	if activePlayer:IsLostUC() then
+		for row in GameInfo.Civilization_BuildingClassOverrides() do
+			if row.CivilizationType == GameInfo.Civilizations[activePlayer:GetCivilizationType()].Type then
+				LuaEvents.GreatWorkBuildingsChanges(GameInfo.BuildingClasses[GameInfo.Buildings[row.BuildingType].BuildingClass].DefaultBuilding)
+				print(GameInfo.BuildingClasses[GameInfo.Buildings[row.BuildingType].BuildingClass].DefaultBuilding)
+			end
+		end
+	end
+	for k, v in pairs(g_ChosenUCList) do
+		if v[1] and v[2] then
+			if v[2] == UC_BUILDING then
+				LuaEvents.GreatWorkBuildingsChanges(activePlayer:GetCivBuilding(GameInfoTypes[GameInfo.Buildings[v[1]].BuildingClass]))
+				print(GameInfo.Buildings[activePlayer:GetCivBuilding(GameInfoTypes[GameInfo.Buildings[v[1]].BuildingClass])].Type)
+			end
+		end
+	end
+end
 function showDialogOnGameStart()
 	activePlayerID = Game.GetActivePlayer()
 	activePlayer = Players[activePlayerID]
@@ -296,6 +315,7 @@ function showDialogOnGameStart()
 	else
 		updateChosenUCList()
 		addOptionalUCNotification()
+		changeGreatWorkBuildings()
 	end
 end
 Events.SequenceGameInitComplete.Add(showDialogOnGameStart)

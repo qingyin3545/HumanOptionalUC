@@ -5,7 +5,7 @@
     <ProjectGuid>{4f9c594e-96a7-4ff8-8955-f44eb86fd13b}</ProjectGuid>
     <Name>玩家自选UC</Name>
     <Guid>0e4241d7-7d73-4f6b-aacd-c4e07ab6e478</Guid>
-    <ModVersion>5</ModVersion>
+    <ModVersion>6</ModVersion>
     <Stability>Alpha</Stability>
     <Teaser>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Teaser>
     <Description>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Description>
