@@ -1,0 +1,1 @@
+UPDATE CustomModOptions SET Value = 1 WHERE Name = 'GLOBAL_OPTIONAL_UC';

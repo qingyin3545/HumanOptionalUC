@@ -61,7 +61,6 @@ local activePlayer = Players[activePlayerID]
 --==========================================================================================
 -- Main Functions
 --==========================================================================================
--- TODO 右键图标打开百科
 -- Initializes All Components.
 function initializeDialog()
 

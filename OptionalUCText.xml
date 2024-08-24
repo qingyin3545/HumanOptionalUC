@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by ModBuddy on 2024/7/13 20:07:43 -->
 <GameData>
-	<CustomModOptions>
-		<Update>
-			<Where Name="GLOBAL_OPTIONAL_UC"/>
-			<Set Value="1"/>
-		</Update>
-	</CustomModOptions>
-
-	<Language_zh_CN>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
-			<Text>请选择四项UC进行本局游戏</Text>
-		</Row>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
-			<Text>请选择一项UC</Text>
-		</Row>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
-			<Text>确认选择</Text>
-		</Row>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
-			<Text>
-				[ICON_BULLET][COLOR_YELLOW]确认[ENDCOLOR]你的选择。
-				[NEWLINE][ICON_BULLET]请[COLOR_NEGATIVE_TEXT]注意[ENDCOLOR]：
-				[NEWLINE][ICON_BULLET]重复的选项只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
-				[NEWLINE][ICON_BULLET]如果不进行选择，则不设置UC（你可以用少于4个选项开始游戏）。
-				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
-				[NEWLINE][ICON_BULLET]前置建筑要求[COLOR_YELLOW]仅需[ENDCOLOR]城市拥有前置同类建筑之一。
-				[NEWLINE][ICON_BULLET]部分UB暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：除总督府、总督宫、宫殿外不可建造的建筑。
-				[NEWLINE][ICON_BULLET]下列UB原文明不在场时仅[COLOR_NEGATIVE_TEXT]面板属性[ENDCOLOR]生效：阿苏尔神庙、诺曼营地、商站、伊斯兰大学、迦太基集市、伊扎卡。
-				[NEWLINE][ICON_BULLET]选择非本文明UB时，政策、建筑、信条对建筑的加成将[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
-				[NEWLINE][ICON_BULLET]旧单位升级时若有多个目标会[COLOR_YELLOW]随机[ENDCOLOR]选择其中一个。
-				[NEWLINE][ICON_BULLET]部分UU暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：海鹞系列舰载机。
-			</Text>
-		</Row>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
-			<Text>你已选择UC</Text>
-		</Row>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT">
-			<Text>本局你选择以下UC进行游戏：</Text>
-		</Row>
-		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
-			<Text>你未选择任何UC，将仅靠UA进行本局游戏，祝你好运！</Text>
-		</Row>
-	</Language_zh_CN>
-
 	<Language_ZH_Hant_HK>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
 			<Text>請選擇四項UC進行本局遊戲</Text>
@@ -115,4 +72,40 @@
 			<Text>你未選擇任何UC，將僅靠UA進行本局遊戲，祝你好運！</Text>
 		</Row>
 	</Language_en_US>
+	
+	<Language_zh_CN>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
+			<Text>请选择四项UC进行本局游戏</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
+			<Text>请选择一项UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
+			<Text>确认选择</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
+			<Text>
+				[ICON_BULLET][COLOR_YELLOW]确认[ENDCOLOR]你的选择。
+				[NEWLINE][ICON_BULLET]请[COLOR_NEGATIVE_TEXT]注意[ENDCOLOR]：
+				[NEWLINE][ICON_BULLET]重复的选项只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
+				[NEWLINE][ICON_BULLET]如果不进行选择，则不设置UC（你可以用少于4个选项开始游戏）。
+				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
+				[NEWLINE][ICON_BULLET]前置建筑要求[COLOR_YELLOW]仅需[ENDCOLOR]城市拥有前置同类建筑之一。
+				[NEWLINE][ICON_BULLET]部分UB暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：除总督府、总督宫、宫殿外不可建造的建筑。
+				[NEWLINE][ICON_BULLET]下列UB原文明不在场时仅[COLOR_NEGATIVE_TEXT]面板属性[ENDCOLOR]生效：阿苏尔神庙、诺曼营地、商站、伊斯兰大学、迦太基集市、伊扎卡。
+				[NEWLINE][ICON_BULLET]选择非本文明UB时，政策、建筑、信条对建筑的加成将[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
+				[NEWLINE][ICON_BULLET]旧单位升级时若有多个目标会[COLOR_YELLOW]随机[ENDCOLOR]选择其中一个。
+				[NEWLINE][ICON_BULLET]部分UU暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：海鹞系列舰载机。
+			</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
+			<Text>你已选择UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT">
+			<Text>本局你选择以下UC进行游戏：</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
+			<Text>你未选择任何UC，将仅靠UA进行本局游戏，祝你好运！</Text>
+		</Row>
+	</Language_zh_CN>
 </GameData>

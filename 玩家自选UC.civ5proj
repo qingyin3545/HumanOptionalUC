@@ -16,7 +16,7 @@
     <SupportsSinglePlayer>true</SupportsSinglePlayer>
     <SupportsMultiplayer>true</SupportsMultiplayer>
     <SupportsHotSeat>true</SupportsHotSeat>
-    <SupportsMac>true</SupportsMac>
+    <SupportsMac>false</SupportsMac>
     <AssemblyName>Civ5Mod1</AssemblyName>
     <RootNamespace>Civ5Mod1</RootNamespace>
     <ModReferences />
@@ -48,6 +48,11 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
+        <FileName>OptionalUC.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
         <FileName>OptionalUCText.xml</FileName>
       </Action>
     </ModActions>
@@ -71,6 +76,10 @@
     <Content Include="OptionalUCSelection.lua">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="OptionalUC.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="OptionalUCSelection.xml">
       <SubType>Lua</SubType>
