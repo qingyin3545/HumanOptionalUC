@@ -23,7 +23,6 @@ for row in GameInfo.Civilization_UnitClassOverrides() do
 	and row.UnitType ~= "UNIT_BARBARIAN_ARCHER"
 	and row.UnitType ~= "UNIT_BARBARIAN_AXMAN"
 	and row.UnitType ~= "UNIT_BARBARIAN_GALLEY"
-	and GameInfo.Units[row.UnitType].Special ~= "SPECIALUNIT_FIGHTER"
 	then
 		table.insert(t_List, {row.UnitType, UC_UNIT, GameInfoTypes[row.UnitType], Locale.ConvertTextKey(GameInfo.Units[row.UnitType].Description)})
 	end
