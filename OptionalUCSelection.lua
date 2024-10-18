@@ -291,7 +291,9 @@ end
 function changeGreatWorkBuildings()
 	if activePlayer:IsLostUC() then
 		for row in GameInfo.Civilization_BuildingClassOverrides() do
-			if row.CivilizationType == GameInfo.Civilizations[activePlayer:GetCivilizationType()].Type then
+			if row.BuildingType
+			and row.CivilizationType == GameInfo.Civilizations[activePlayer:GetCivilizationType()].Type 
+			then
 				LuaEvents.GreatWorkBuildingsChanges(GameInfo.BuildingClasses[GameInfo.Buildings[row.BuildingType].BuildingClass].DefaultBuilding)
 				print(GameInfo.BuildingClasses[GameInfo.Buildings[row.BuildingType].BuildingClass].DefaultBuilding)
 			end
