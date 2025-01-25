@@ -7,7 +7,7 @@
     <Guid>0e4241d7-7d73-4f6b-aacd-c4e07ab6e478</Guid>
     <ModVersion>6</ModVersion>
     <Stability>Alpha</Stability>
-    <Teaser>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Teaser>
+    <Teaser>(6.2)[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Teaser>
     <Description>[COLOR_NEGATIVE_TEXT]禁用[ENDCOLOR]人类玩家的原始UC并允许玩家[COLOR_YELLOW]自选[ENDCOLOR]4UC进行游戏</Description>
     <Authors>Qingyin</Authors>
     <SpecialThanks>旅宿樱花、657、苏维埃无惨阶级、叶帅</SpecialThanks>
@@ -25,7 +25,7 @@
         <Type>Mod</Type>
         <Name>MPDLL</Name>
         <Id>a2969a0a-e4da-41cc-9e0b-19b29aa971d8</Id>
-        <MinVersion>31</MinVersion>
+        <MinVersion>37</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>
       <Association>

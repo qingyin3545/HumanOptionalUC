@@ -1,3 +1,6 @@
+--从dll直接执行代码
+--Game.DoOptionalUCCode()
+
 include ("IconSupport");
 include ("MenuUtils");
 include("InfoTooltipInclude");
