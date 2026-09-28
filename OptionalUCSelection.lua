@@ -18,11 +18,14 @@ local OPTIONAL_UC_COUNT = 4;
 local g_UCList = {};
 local g_ChosenUCList = {};
 local g_UCInstances = {};
+local g_UCRows = {};
 local g_ViewOnly = false;
 
 local UC_UNIT = 0;
 local UC_BUILDING = 1;
 local UC_IMPROVEMENT = 2;
+-- 每行固定4个
+local SLOTS_PER_ROW = 4;
 local t_List = {};
 
 -- 抽取所有 UC
@@ -157,21 +160,36 @@ end
 local function BuildUCSelectionUI()
 	Controls.UCSelectPanel:DestroyAllChildren();
 	g_UCInstances = {};
+	g_UCRows = {};
 
 	for i = 1, OPTIONAL_UC_COUNT do
+		local row = g_UCRows[#g_UCRows];
+
+		if row == nil or row.Count >= SLOTS_PER_ROW then
+			row = {};
+			ContextPtr:BuildInstanceForControl("UCSelectRow", row, Controls.UCSelectPanel);
+			row.Count = 0;
+			table.insert(g_UCRows, row);
+		end
+
 		local instance = {};
-		ContextPtr:BuildInstanceForControl("UCSelectInstance", instance, Controls.UCSelectPanel);
+		ContextPtr:BuildInstanceForControl("UCSelectInstance", instance, row.Root);
+		row.Count = row.Count + 1;
 		g_UCInstances[i] = instance;
 
 		-- 默认使用原来的占位图标
 		IconHookup(11, 256, "EXPANSION2_PROMOTION_ATLAS", instance.Portrait);
 
 		UpdateUCList(instance, i);
+
+		row.Root:CalculateSize();
 	end
 
 	Controls.UCSelectPanel:CalculateSize();
 	Controls.UCSelectPanel:ReprocessAnchoring();
 	Controls.UCScrollPanel:CalculateInternalSize();
+	Controls.OKButton:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK_TOOLTIP"));
+	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK"))
 end
 
 --==========================================================================================
@@ -247,8 +265,6 @@ end
 function showDialog()
 	g_ViewOnly = false;
 	ContextPtr:SetHide(false);
-	Controls.OKButton:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK_TOOLTIP"));
-	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK"))
 	initializeDialog();
 end
 
@@ -269,18 +285,32 @@ function showChosenUCDialog()
 
 	Controls.UCSelectPanel:DestroyAllChildren();
 	g_UCInstances = {};
+	g_UCRows = {};
 
 	for i, v in ipairs(g_ChosenUCList) do
+		local row = g_UCRows[#g_UCRows];
+
+		if row == nil or row.Count >= SLOTS_PER_ROW then
+			row = {};
+			ContextPtr:BuildInstanceForControl("UCSelectRow", row, Controls.UCSelectPanel);
+			row.Count = 0;
+			table.insert(g_UCRows, row);
+		end
+
 		local instance = {};
-		ContextPtr:BuildInstanceForControl("UCSelectInstance", instance, Controls.UCSelectPanel);
+		ContextPtr:BuildInstanceForControl("UCSelectInstance", instance, row.Root);
+		row.Count = row.Count + 1;
 		g_UCInstances[i] = instance;
 
 		SetUCSelected(i, v[1], v[2]);
+
+		row.Root:CalculateSize();
 	end
 
 	Controls.UCSelectPanel:CalculateSize();
 	Controls.UCSelectPanel:ReprocessAnchoring();
 	Controls.UCScrollPanel:CalculateInternalSize();
+	Controls.UCScrollPanel:SetScrollValue(0);
 
 	Controls.OKButton:SetToolTipString("");
 	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CLOSE"))
