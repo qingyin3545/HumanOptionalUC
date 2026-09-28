@@ -104,17 +104,16 @@ local function SetUCSelected(index, UCID, UCType)
 
 	if g_ViewOnly then
 		instance.SelectList:SetDisabled(true);
-		instance.IconButton:SetToolTipString("");
 	else
 		instance.SelectList:SetDisabled(false);
+	end
 
-		if UCType == UC_UNIT then
-			instance.IconButton:SetToolTipString(GetHelpTextForUnit(UCID));
-		elseif UCType == UC_BUILDING then
-			instance.IconButton:SetToolTipString(GetHelpTextForBuilding(UCID));
-		elseif UCType == UC_IMPROVEMENT then
-			instance.IconButton:SetToolTipString(GetHelpTextForImprovement(UCID));
-		end
+	if UCType == UC_UNIT then
+		instance.IconButton:SetToolTipString(GetHelpTextForUnit(UCID));
+	elseif UCType == UC_BUILDING then
+		instance.IconButton:SetToolTipString(GetHelpTextForBuilding(UCID));
+	elseif UCType == UC_IMPROVEMENT then
+		instance.IconButton:SetToolTipString(GetHelpTextForImprovement(UCID));
 	end
 
 	IconHookup(ucInfo.PortraitIndex, 256, ucInfo.IconAtlas, instance.Portrait);
