@@ -4,7 +4,7 @@
     <Box Style="BGBlock_ClearTopBar"/>
 
     <!-- 界面方框。固定一行4个，选项过多时向下换行 -->
-    <Grid ID="MainGrid" Size="1080,400" Anchor="C,C" Style="Grid9DetailFive140" ConsumeMouse="1">
+    <Grid ID="MainGrid" Size="1080,410" Anchor="C,C" Style="Grid9DetailFive140" ConsumeMouse="1">
         <!-- 领袖头像按钮 -->
         <Button ID="IconButtonTop" Anchor="C,T" Offset="0,0" Size="256,128">
             <Image Anchor="C,T" AnchorSide="I,O" Offset="0,-91" Size="256,128" Texture="DecTop256x64.dds">
@@ -19,18 +19,29 @@
         <Image Anchor="R,C" AnchorSide="O,I" Offset="-17,0" Size="32,64" Texture="Dec32x64Right.dds" />
 
         <!-- 标题 -->
-        <Label Anchor="C,T" Offset="0,15" Font="TwCenMT24" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC"/>
+        <Label ID="UCTopLabel" Anchor="C,T" Offset="0,15" Font="TwCenMT24" FontStyle="Shadow" ColorSet="Beige_Black_Alpha"/>
 
         <!-- 动态选择区域 -->
-        <ScrollPanel ID="UCScrollPanel" Anchor="C,T" Offset="0,40" Size="1080,320" Vertical="1">
+        <ScrollPanel ID="UCScrollPanel" Anchor="C,T" Offset="0,55" Size="1080,300" Vertical="1">
             <Stack ID="UCSelectPanel" Anchor="C,T" Offset="0,0" StackGrowth="Bottom" Padding="10"/>
-            <ScrollBar Offset="12,0" Style="VertSlider" Anchor="R,C" AnchorSide="I,I" Length="270" />
+            <ScrollBar Offset="12,0" Style="VertSlider" Anchor="R,C" AnchorSide="I,I" Length="250" />
             <UpButton Offset="12,7" Style="ScrollBarUp" Anchor="R,T" AnchorSide="I,I" />
             <DownButton Offset="12,7" Style="ScrollBarDown" Anchor="R,B" AnchorSide="I,I" />
         </ScrollPanel>
 
         <!-- 确认按钮 -->
         <GridButton ID="OKButton" Anchor="C,B" Offset="0,-30" Size="140,30" Style="BaseButton">
+            <Label Anchor="C,C" Offset="0,-2" Font="TwCenMT20" FontStyle="Shadow" ColorSet="Beige_Black_Alpha"/>
+            <ShowOnMouseOver>
+                <AlphaAnim Anchor="L,C" AnchorSide="O,O" Size="16,32" TextureOffset="0,0" Texture="buttonsidesglow.dds" Cycle="Bounce" Speed="1" AlphaStart=".99" AlphaEnd=".25"/>
+                <Image Anchor="L,C" AnchorSide="O,O" Size="8,16" TextureOffset="0,0" Texture="buttonsides.dds" />
+                <AlphaAnim Anchor="R,C" AnchorSide="O,O" Size="16,32" TextureOffset="16,0" Texture="buttonsidesglow.dds" Cycle="Bounce" Speed="1" AlphaStart=".99" AlphaEnd=".25"/>
+                <Image Anchor="R,C" AnchorSide="O,O" Size="8,16" TextureOffset="8,0" Texture="buttonsides.dds" />
+            </ShowOnMouseOver>
+        </GridButton>
+
+        <!-- 添加按钮 -->
+        <GridButton ID="AddButton" Anchor="C,B" Offset="0,-90" Size="140,30" Style="BaseButton" Hidden="1" String="TXT_KEY_OPTIONAL_UC_HELP_FROM_GREAT_QINGYING" ToolTip="TXT_KEY_OPTIONAL_UC_HELP_FROM_GREAT_QINGYING_TOOLTIP">
             <Label Anchor="C,C" Offset="0,-2" Font="TwCenMT20" FontStyle="Shadow" ColorSet="Beige_Black_Alpha"/>
             <ShowOnMouseOver>
                 <AlphaAnim Anchor="L,C" AnchorSide="O,O" Size="16,32" TextureOffset="0,0" Texture="buttonsidesglow.dds" Cycle="Bounce" Speed="1" AlphaStart=".99" AlphaEnd=".25"/>

@@ -11,8 +11,7 @@ ContextPtr:SetHide(true);
 -- Variables
 --==========================================================================================
 
--- 修改这里即可改变可选 UC 的数量。
--- 不需要在游戏中动态修改，默认 4。
+-- 修改这里即可改变可选UC的数量, 默认4。
 local OPTIONAL_UC_COUNT = 4;
 
 local g_UCList = {};
@@ -157,12 +156,8 @@ local function UpdateUCList(instance, index)
 end
 
 -- 创建 OPTIONAL_UC_COUNT 个选择项
-local function BuildUCSelectionUI()
-	Controls.UCSelectPanel:DestroyAllChildren();
-	g_UCInstances = {};
-	g_UCRows = {};
-
-	for i = 1, OPTIONAL_UC_COUNT do
+local function BuildUCSelectionUI(count)
+	for i = 1, count do
 		local row = g_UCRows[#g_UCRows];
 
 		if row == nil or row.Count >= SLOTS_PER_ROW then
@@ -172,15 +167,16 @@ local function BuildUCSelectionUI()
 			table.insert(g_UCRows, row);
 		end
 
+		local index = #g_UCInstances + 1;
 		local instance = {};
 		ContextPtr:BuildInstanceForControl("UCSelectInstance", instance, row.Root);
 		row.Count = row.Count + 1;
-		g_UCInstances[i] = instance;
+		g_UCInstances[index] = instance;
 
 		-- 默认使用原来的占位图标
 		IconHookup(11, 256, "EXPANSION2_PROMOTION_ATLAS", instance.Portrait);
 
-		UpdateUCList(instance, i);
+		UpdateUCList(instance, index);
 
 		row.Root:CalculateSize();
 	end
@@ -188,8 +184,6 @@ local function BuildUCSelectionUI()
 	Controls.UCSelectPanel:CalculateSize();
 	Controls.UCSelectPanel:ReprocessAnchoring();
 	Controls.UCScrollPanel:CalculateInternalSize();
-	Controls.OKButton:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK_TOOLTIP"));
-	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK"))
 end
 
 --==========================================================================================
@@ -215,7 +209,14 @@ function initializeDialog()
 		print("Leader not found")
 	end
 
-	BuildUCSelectionUI();
+	Controls.UCSelectPanel:DestroyAllChildren();
+	g_UCInstances = {};
+	g_UCRows = {};
+	BuildUCSelectionUI(OPTIONAL_UC_COUNT);
+	Controls.UCTopLabel:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC"))
+	Controls.OKButton:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK_TOOLTIP"));
+	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_OK"))
+	Controls.AddButton:SetHide(true);
 end
 
 --==========================================================================================
@@ -312,8 +313,10 @@ function showChosenUCDialog()
 	Controls.UCScrollPanel:CalculateInternalSize();
 	Controls.UCScrollPanel:SetScrollValue(0);
 
+	Controls.UCTopLabel:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2"))
 	Controls.OKButton:SetToolTipString("");
 	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CLOSE"))
+	Controls.AddButton:SetHide(true);
 end
 
 -- Hide function
@@ -364,6 +367,21 @@ Controls.OKButton:RegisterCallback(Mouse.eLClick, function()
 	else
 		onApplyButton();
 	end
+end);
+local OKClickNum = 0
+Controls.OKButton:RegisterCallback(Mouse.eRClick, function()
+	if g_ViewOnly then 
+		return 
+	end
+	OKClickNum = OKClickNum + 1;
+	if OKClickNum >= 3 then
+		OKClickNum = 0;
+		Controls.AddButton:SetHide(false);
+	end
+end);
+
+Controls.AddButton:RegisterCallback(Mouse.eLClick, function()
+	BuildUCSelectionUI(OPTIONAL_UC_COUNT);
 end);
 
 function addOptionalUCNotification()
@@ -422,7 +440,7 @@ function showDialogOnGameStart()
 		showDialog();
 	else
 		updateChosenUCList();
-		addOptionalUCNotification();
+		--addOptionalUCNotification();
 		changeGreatWorkBuildings();
 	end
 end
@@ -430,7 +448,7 @@ Events.SequenceGameInitComplete.Add(showDialogOnGameStart);
 
 function OnAdditionalInformationDropdownGatherEntries(additionalEntries)
     table.insert(additionalEntries, {
-        text = Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD"),
+        text = Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CLOSED"),
         call = showChosenUCDialog
     })
 end

@@ -3,7 +3,10 @@
 <GameData>
 	<Language_ZH_Hant_HK>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
-			<Text>請選擇四項UC進行本局遊戲</Text>
+			<Text>請選擇UC進行本局遊戲</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2">
+			<Text>你使用以下UC進行本局遊戲</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
 			<Text>請選擇一項UC</Text>
@@ -24,6 +27,7 @@
 				[NEWLINE][ICON_BULLET]部分UB暫時[COLOR_NEGATIVE_TEXT]無法[ENDCOLOR]選擇：除總督府、總督宮、宮殿外不可建造的建築。
 				[NEWLINE][ICON_BULLET]選擇非本文明UB時，政策、建築、信條對建築的加成將[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]舊單位升級時若有多個目標會[COLOR_YELLOW]隨機[ENDCOLOR]選擇其中一個。
+				[NEWLINE][NEWLINE]你[COLOR_POSITIVE_TEXT]隨時[ENDCOLOR]可以在右上角的附加信息中查看已選擇的UC。
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
@@ -49,8 +53,7 @@
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
-				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]你的選擇。
-				[NEWLINE][ICON_BULLET]請[COLOR_NEGATIVE_TEXT]註意[ENDCOLOR]：
+				[COLOR_YELLOW]確認[ENDCOLOR]你的選擇，請[COLOR_NEGATIVE_TEXT]註意[ENDCOLOR]：
 				[NEWLINE][ICON_BULLET]重復的選項只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
 				[NEWLINE][ICON_BULLET]如果不進行選擇，則不設置UC（你可以用少於4個選項開始遊戲）。
 				[NEWLINE][ICON_BULLET]你會[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的選項中包含他們，則依舊可以使用）。
@@ -68,11 +71,23 @@
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
 			<Text>你未選擇任何UC，將僅靠UA進行本局遊戲，祝你好運！</Text>
 		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CLOSED">
+			<Text>查看已選擇UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_HELP_FROM_GREAT_QINGYING">
+			<Text>偉大的清音的幫助</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_HELP_FROM_GREAT_QINGYING_TOOLTIP">
+			<Text>向偉大的清音尋求幫助，額外獲得4個可選UC</Text>
+		</Row>
 	</Language_en_US>
 	
 	<Language_zh_CN>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC">
-			<Text>请选择四项UC进行本局游戏</Text>
+			<Text>请选择UC进行本局游戏</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2">
+			<Text>你使用以下UC进行本局游戏</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
 			<Text>请选择一项UC</Text>
@@ -85,14 +100,14 @@
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
-				[ICON_BULLET][COLOR_YELLOW]确认[ENDCOLOR]你的选择。
-				[NEWLINE][ICON_BULLET]请[COLOR_NEGATIVE_TEXT]注意[ENDCOLOR]：
+				[COLOR_YELLOW]确认[ENDCOLOR]你的选择，请[COLOR_NEGATIVE_TEXT]注意[ENDCOLOR]：
 				[NEWLINE][ICON_BULLET]重复的选项只生效[COLOR_NEGATIVE_TEXT]一次[ENDCOLOR]。
 				[NEWLINE][ICON_BULLET]如果不进行选择，则不设置UC（你可以用少于4个选项开始游戏）。
 				[NEWLINE][ICON_BULLET]你会[COLOR_NEGATIVE_TEXT]失去[ENDCOLOR]原有的4UC（若你的选项中包含他们，则依旧可以使用）。
 				[NEWLINE][ICON_BULLET]部分UB暂时[COLOR_NEGATIVE_TEXT]无法[ENDCOLOR]选择：除总督府、总督宫、宫殿外不可建造的建筑。
 				[NEWLINE][ICON_BULLET]选择非本文明UB时，政策、建筑、信条对建筑的加成将[COLOR_NEGATIVE_TEXT]失效[ENDCOLOR]
 				[NEWLINE][ICON_BULLET]旧单位升级时若有多个目标会[COLOR_YELLOW]随机[ENDCOLOR]选择其中一个。
+				[NEWLINE][NEWLINE]你[COLOR_POSITIVE_TEXT]随时[ENDCOLOR]可以在右上角的附加信息中查看已选择的UC。
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_HEAD">
@@ -103,6 +118,15 @@
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_NOTIFICATION_TEXT2">
 			<Text>你未选择任何UC，将仅靠UA进行本局游戏，祝你好运！</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CLOSED">
+			<Text>查看已选择UC</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_HELP_FROM_GREAT_QINGYING">
+			<Text>伟大的清音的帮助</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_HELP_FROM_GREAT_QINGYING_TOOLTIP">
+			<Text>向伟大的清音寻求帮助，额外获得4个可选UC</Text>
 		</Row>
 	</Language_zh_CN>
 </GameData>
