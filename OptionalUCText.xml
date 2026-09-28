@@ -11,6 +11,9 @@
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
 			<Text>確認選擇</Text>
 		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CLOSE">
+			<Text>關閉</Text>
+		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
 				[ICON_BULLET][COLOR_YELLOW]確認[ENDCOLOR]你的選擇。
@@ -76,6 +79,9 @@
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK">
 			<Text>确认选择</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CLOSE">
+			<Text>关闭</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_OK_TOOLTIP">
 			<Text>
