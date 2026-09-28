@@ -6,7 +6,10 @@
 			<Text>請選擇UC進行本局遊戲</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2">
-			<Text>你使用以下UC進行本局遊戲</Text>
+			<Text>你選擇以下{1_Num}個UC進行本局遊戲</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_3">
+			<Text>本局遊戲你未選擇UC</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
 			<Text>請選擇一項UC</Text>
@@ -87,7 +90,10 @@
 			<Text>请选择UC进行本局游戏</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2">
-			<Text>你使用以下UC进行本局游戏</Text>
+			<Text>你选择以下{1_Num}个UC进行本局游戏</Text>
+		</Row>
+		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_3">
+			<Text>本局游戏你未选择UC</Text>
 		</Row>
 		<Row Tag="TXT_KEY_OPTIONAL_UC_CHOSE">
 			<Text>请选择一项UC</Text>

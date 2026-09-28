@@ -313,7 +313,11 @@ function showChosenUCDialog()
 	Controls.UCScrollPanel:CalculateInternalSize();
 	Controls.UCScrollPanel:SetScrollValue(0);
 
-	Controls.UCTopLabel:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2"))
+	if #g_ChosenUCList == 0 then
+		Controls.UCTopLabel:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_3"))
+	else
+		Controls.UCTopLabel:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CHOSE_TOPIC_2", #g_ChosenUCList))
+	end
 	Controls.OKButton:SetToolTipString("");
 	Controls.OKButton:SetText(Locale.ConvertTextKey("TXT_KEY_OPTIONAL_UC_CLOSE"))
 	Controls.AddButton:SetHide(true);
