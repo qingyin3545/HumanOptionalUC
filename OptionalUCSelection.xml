@@ -67,7 +67,16 @@
                         <Image ID="Portrait" Anchor="C,C" Offset="0,0" Size="256,256" TextureOffset="0,0"/>
                     </Image>
                 </Button>
-                <PullDown ID="SelectList" Anchor="C,C" Style="GenericPullDown" ScrollThreshold="170" Size="190,30" SpaceForScroll="1"/>
+                <!-- 搜索输入框与下拉框重叠，右侧按钮负责切换/应用搜索 -->
+                <Grid Anchor="C,C" Offset="0,0" Size="190,30" Padding="0,0">
+                    <PullDown ID="SelectList" Anchor="L,C" Offset="0,0" Style="GenericPullDown" ScrollThreshold="170" Size="160,30" SpaceForScroll="1"/>
+                    <Grid ID="SearchBoxGrid" Anchor="L,C" Offset="0,0" Size="160,30" Padding="0,0" Style="Grid9Frame" Hidden="1">
+                        <EditBox ID="SearchEditBox" Anchor="L,C" Offset="10,0" Size="146,24" Font="TwCenMT20" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" MaxLength="50" Hidden="1"/>
+                    </Grid>
+                    <GridButton ID="SearchButton" Anchor="R,C" Offset="0,0" Size="30,30" Style="BaseButton" String="">
+                        <Image Anchor="C,C" Offset="0,0" Size="30,30" Texture="Civilopedia_SearchIcon.dds" ToolTip="TXT_KEY_SEARCH_BUTTON"/>
+                    </GridButton>
+                </Grid>
             </Stack>
         </Container>
     </Instance>

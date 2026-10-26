@@ -27,10 +27,13 @@ local UC_IMPROVEMENT = 2;
 local SLOTS_PER_ROW = 4;
 local t_List = {};
 
+local activePlayerID = Game.GetActivePlayer()
+local activePlayer = Players[activePlayerID]
+local activeCiv = GameInfo.Civilizations[activePlayerID]
+
 -- 抽取所有 UC
 for row in GameInfo.Civilization_UnitClassOverrides() do
-	-- 不能建造的以及本身是默认单位的不要
-	-- 海鹞 蛮族?
+	-- 蛮族不允许选择
 	if row.UnitType 
 	and row.UnitType ~= "UNIT_BARBARIAN_WARRIOR"
 	and row.UnitType ~= "UNIT_BARBARIAN_ARCHER"
@@ -47,11 +50,13 @@ t_List = {};
 for row in GameInfo.Civilization_BuildingClassOverrides() do
 	-- 不能建造的不要
 	-- 总督府 总督宫 宫殿允许(V5)
-	if row.BuildingType 
-	and (GameInfo.Buildings[row.BuildingType].Cost > 1 
+	-- 文明本身的UB必定可选
+	if row.BuildingType and ( row.CivilizationType == activeCiv or 
+		(GameInfo.Buildings[row.BuildingType].Cost > 1 
 		or row.BuildingType == "BUILDING_SATRAPS_COURT" 
 		or row.BuildingType == "BUILDING_PUPPET_GOVERNEMENT_FULL"
-		or GameInfo.Buildings[row.BuildingType].BuildingClass == "BUILDINGCLASS_PALACE") 
+		or GameInfo.Buildings[row.BuildingType].BuildingClass == "BUILDINGCLASS_PALACE")
+	)
 	then
 		table.insert(t_List, {row.BuildingType, UC_BUILDING, GameInfoTypes[row.BuildingType], Locale.ConvertTextKey(GameInfo.Buildings[row.BuildingType].Description)})
 	end
@@ -68,9 +73,6 @@ end
 table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
 for k, v in pairs(t_List) do table.insert(g_UCList, v) end
 t_List = {};
-
-local activePlayerID = Game.GetActivePlayer()
-local activePlayer = Players[activePlayerID]
 
 --==========================================================================================
 -- UC UI Functions
@@ -128,30 +130,72 @@ local function OnUCSelected(index, UCID, UCType)
 	SetUCSelected(index, UCID, UCType);
 end
 
+-- 判断 UC 名称是否符合当前选择项的筛选条件
+local function IsUCMatch(ucName, filterText)
+    if not filterText or filterText == "" then
+        return true;
+    end
+    return string.find(string.lower(ucName or ""), string.lower(filterText), 1, true) ~= nil;
+end
+
 -- 更新一个 PullDown
 local function UpdateUCList(instance, index)
-	local selectList = instance.SelectList;
+    local selectList = instance.SelectList;
+    selectList:ClearEntries();
 
-	selectList:ClearEntries();
+    for k, v in ipairs(g_UCList) do
+        if IsUCMatch(v[4], instance.FilterText) then
+            local UCPoint = GetUCInfo(v[3], v[2]);
+            if UCPoint then
+                local entry = {};
+                selectList:BuildEntry("InstanceOne", entry);
+                entry.Button:SetVoid1(v[3]);
+                entry.Button:SetVoid2(v[2]);
+                entry.Button:SetText(Locale.ConvertTextKey(UCPoint.Description));
+            end
+        end
+    end
 
-	for k, v in pairs(g_UCList) do
-		local entry = {};
-		selectList:BuildEntry("InstanceOne", entry);
+    selectList:GetButton():LocalizeAndSetText("TXT_KEY_OPTIONAL_UC_CHOSE");
+    selectList:CalculateInternals();
+    selectList:RegisterSelectionCallback(function(UCID, UCType)
+        OnUCSelected(index, UCID, UCType);
+    end);
+end
 
-		local UCPoint = GetUCInfo(v[3], v[2]);
-		if UCPoint then
-			-- RegisterSelectionCallback 会把 Void1/Void2 作为参数传给回调
-			entry.Button:SetVoid1(v[3]);
-			entry.Button:SetVoid2(v[2]);
-			entry.Button:SetText(Locale.ConvertTextKey(UCPoint.Description));
-		end
-	end
+-- 搜索按钮在下拉框和输入框之间切换；第二次点击时应用筛选并重置当前选择
+local function OnUCSearch(index)
+    if g_ViewOnly then
+        return;
+    end
 
-	selectList:GetButton():LocalizeAndSetText("TXT_KEY_OPTIONAL_UC_CHOSE");
-	selectList:CalculateInternals();
-	selectList:RegisterSelectionCallback(function(UCID, UCType)
-		OnUCSelected(index, UCID, UCType);
-	end);
+    local instance = g_UCInstances[index];
+    if not instance then
+        return;
+    end
+
+    if not instance.IsSearchMode then
+        instance.IsSearchMode = true;
+        instance.SelectList:SetHide(true);
+        instance.SearchBoxGrid:SetHide(false);
+        instance.SearchEditBox:SetHide(false);
+		instance.SearchEditBox:SetText("");
+        instance.SearchEditBox:TakeFocus();
+        return;
+    end
+
+    instance.FilterText = instance.SearchEditBox:GetText() or "";
+    instance.IsSearchMode = false;
+    instance.SearchEditBox:SetHide(true);
+    instance.SearchBoxGrid:SetHide(true);
+    instance.SelectList:SetHide(false);
+
+    g_ChosenUCList[index] = {nil, nil};
+    instance.SelectList:GetButton():LocalizeAndSetText("TXT_KEY_OPTIONAL_UC_CHOSE");
+    instance.SelectList:SetDisabled(false);
+    instance.IconButton:SetToolTipString("");
+    IconHookup(11, 256, "EXPANSION2_PROMOTION_ATLAS", instance.Portrait);
+    UpdateUCList(instance, index);
 end
 
 -- 创建 OPTIONAL_UC_COUNT 个选择项
@@ -174,6 +218,16 @@ local function BuildUCSelectionUI(count)
 
 		-- 默认使用原来的占位图标
 		IconHookup(11, 256, "EXPANSION2_PROMOTION_ATLAS", instance.Portrait);
+        instance.FilterText = "";
+        instance.IsSearchMode = false;
+        instance.SearchEditBox:SetText("");
+        instance.SearchEditBox:SetHide(true);
+        instance.SearchBoxGrid:SetHide(true);
+        instance.SelectList:SetHide(false);
+        instance.SearchButton:SetHide(false);
+        instance.SearchButton:RegisterCallback(Mouse.eLClick, function()
+            OnUCSearch(index);
+        end);
 
 		UpdateUCList(instance, index);
 
@@ -301,6 +355,14 @@ function showChosenUCDialog()
 		ContextPtr:BuildInstanceForControl("UCSelectInstance", instance, row.Root);
 		row.Count = row.Count + 1;
 		g_UCInstances[i] = instance;
+        instance.FilterText = "";
+        instance.IsSearchMode = false;
+        instance.SearchEditBox:SetText("");
+        instance.SearchEditBox:SetHide(true);
+        instance.SearchBoxGrid:SetHide(true);
+        instance.SelectList:SetHide(false);
+		instance.SelectList:SetAnchor("C,C");
+        instance.SearchButton:SetHide(true);
 
 		SetUCSelected(i, v[1], v[2]);
 
