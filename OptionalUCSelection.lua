@@ -25,54 +25,56 @@ local UC_BUILDING = 1;
 local UC_IMPROVEMENT = 2;
 -- 每行固定4个
 local SLOTS_PER_ROW = 4;
-local t_List = {};
 
 local activePlayerID = Game.GetActivePlayer()
 local activePlayer = Players[activePlayerID]
-local activeCiv = GameInfo.Civilizations[activePlayerID]
+local activeCivType = GameInfo.Civilizations[activePlayerID].Type
 
--- 抽取所有 UC
-for row in GameInfo.Civilization_UnitClassOverrides() do
-	-- 蛮族不允许选择
-	if row.UnitType 
-	and row.UnitType ~= "UNIT_BARBARIAN_WARRIOR"
-	and row.UnitType ~= "UNIT_BARBARIAN_ARCHER"
-	and row.UnitType ~= "UNIT_BARBARIAN_AXMAN"
-	and row.UnitType ~= "UNIT_BARBARIAN_GALLEY"
-	then
-		table.insert(t_List, {row.UnitType, UC_UNIT, GameInfoTypes[row.UnitType], Locale.ConvertTextKey(GameInfo.Units[row.UnitType].Description)})
+local function InitUCList()
+	local t_List = {};
+	-- 抽取所有 UC
+	for row in GameInfo.Civilization_UnitClassOverrides() do
+		-- 蛮族不允许选择
+		if row.UnitType 
+		and row.UnitType ~= "UNIT_BARBARIAN_WARRIOR"
+		and row.UnitType ~= "UNIT_BARBARIAN_ARCHER"
+		and row.UnitType ~= "UNIT_BARBARIAN_AXMAN"
+		and row.UnitType ~= "UNIT_BARBARIAN_GALLEY"
+		then
+			table.insert(t_List, {row.UnitType, UC_UNIT, GameInfoTypes[row.UnitType], Locale.ConvertTextKey(GameInfo.Units[row.UnitType].Description)})
+		end
 	end
-end
-table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
-g_UCList = t_List;
-t_List = {};
+	table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
+	g_UCList = t_List;
+	t_List = {};
 
-for row in GameInfo.Civilization_BuildingClassOverrides() do
-	-- 不能建造的不要
-	-- 总督府 总督宫 宫殿允许(V5)
-	-- 文明本身的UB必定可选
-	if row.BuildingType and ( row.CivilizationType == activeCiv or 
-		(GameInfo.Buildings[row.BuildingType].Cost > 1 
-		or row.BuildingType == "BUILDING_SATRAPS_COURT" 
-		or row.BuildingType == "BUILDING_PUPPET_GOVERNEMENT_FULL"
-		or GameInfo.Buildings[row.BuildingType].BuildingClass == "BUILDINGCLASS_PALACE")
-	)
-	then
-		table.insert(t_List, {row.BuildingType, UC_BUILDING, GameInfoTypes[row.BuildingType], Locale.ConvertTextKey(GameInfo.Buildings[row.BuildingType].Description)})
+	for row in GameInfo.Civilization_BuildingClassOverrides() do
+		-- 不能建造的不要
+		-- 总督府 总督宫 宫殿允许(V5)
+		-- 文明本身的UB必定可选
+		if row.BuildingType and ( row.CivilizationType == activeCivType or 
+			(GameInfo.Buildings[row.BuildingType].Cost > 1 
+			or row.BuildingType == "BUILDING_SATRAPS_COURT" 
+			or row.BuildingType == "BUILDING_PUPPET_GOVERNEMENT_FULL"
+			or GameInfo.Buildings[row.BuildingType].BuildingClass == "BUILDINGCLASS_PALACE")
+		)
+		then
+			table.insert(t_List, {row.BuildingType, UC_BUILDING, GameInfoTypes[row.BuildingType], Locale.ConvertTextKey(GameInfo.Buildings[row.BuildingType].Description)})
+		end
 	end
-end
-table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
-for k, v in pairs(t_List) do table.insert(g_UCList, v) end
-t_List = {};
+	table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
+	for k, v in pairs(t_List) do table.insert(g_UCList, v) end
+	t_List = {};
 
-for row in GameInfo.Improvements() do
-	if row.Type and row.CivilizationType then
-		table.insert(t_List, {row.Type, UC_IMPROVEMENT, row.ID, Locale.ConvertTextKey(row.Description)})
+	for row in GameInfo.Improvements() do
+		if row.Type and row.CivilizationType then
+			table.insert(t_List, {row.Type, UC_IMPROVEMENT, row.ID, Locale.ConvertTextKey(row.Description)})
+		end
 	end
+	table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
+	for k, v in pairs(t_List) do table.insert(g_UCList, v) end
+	t_List = {};
 end
-table.sort(t_List, function(a , b) return Locale.Compare(a[4], b[4]) == -1 end);
-for k, v in pairs(t_List) do table.insert(g_UCList, v) end
-t_List = {};
 
 --==========================================================================================
 -- UC UI Functions
@@ -247,8 +249,6 @@ end
 function initializeDialog()
 	local pPlayer = activePlayer;	
 	local leader = GameInfo.Leaders[pPlayer:GetLeaderType()];
-	local activeCivID = pPlayer:GetCivilizationType();
-	local activeCiv = GameInfo.Civilizations[activeCivID];
 
 	g_ChosenUCList = {};
 	for i = 1, OPTIONAL_UC_COUNT do
@@ -326,6 +326,7 @@ end
 function showChosenUCDialog()
 	activePlayerID = Game.GetActivePlayer();
 	activePlayer = Players[activePlayerID];
+	activeCivType = GameInfo.Civilizations[activePlayerID].Type
 
 	g_ViewOnly = true;
 	g_ChosenUCList = GetChosenUCList();
@@ -479,7 +480,7 @@ function changeGreatWorkBuildings()
 	if activePlayer:IsLostUC() then
 		for row in GameInfo.Civilization_BuildingClassOverrides() do
 			if row.BuildingType
-			and row.CivilizationType == GameInfo.Civilizations[activePlayer:GetCivilizationType()].Type 
+			and row.CivilizationType == activeCivType 
 			then
 				LuaEvents.GreatWorkBuildingsChanges(GameInfo.BuildingClasses[GameInfo.Buildings[row.BuildingType].BuildingClass].DefaultBuilding);
 				print(GameInfo.BuildingClasses[GameInfo.Buildings[row.BuildingType].BuildingClass].DefaultBuilding);
@@ -500,8 +501,10 @@ end
 function showDialogOnGameStart()
 	activePlayerID = Game.GetActivePlayer();
 	activePlayer = Players[activePlayerID];
+	activeCivType = GameInfo.Civilizations[activePlayer:GetCivilizationType()].Type
 
 	if not activePlayer:IsLostUC() then
+		InitUCList();
 		showDialog();
 	else
 		updateChosenUCList();
